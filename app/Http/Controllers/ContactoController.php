@@ -53,7 +53,7 @@ class ContactoController extends Controller
         $subject = $data['textoMensajeContacto'];
         $for = $producto->vendedor->email;
         Mail::send('email',$request->all(), function($msj) use($subject,$for){
-            $msj->from(auth()->user()->email,auth()->user()->name);
+            $msj->from(auth()->user()->email, auth()->user()->name);
             $msj->subject($subject);
             $msj->to($for);
         });

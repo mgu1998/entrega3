@@ -24,9 +24,9 @@
                 <div class="card-body px-0  py-3">
 
                     <h4 class="card-text"><b>{{ $producto->precio }} €</b></h4>
-
-                    <h4 class="card-title">{{ $producto->nombre }}</h4>
-
+                    <a href="/producto/{{$producto->id}}">
+                        <h4 class="card-title">{{ $producto->nombre }}</h4>
+                    </a>
                     <p class="card-text" style="opacity:0.7">{{ $producto->descripcion }}</p>
                     <p class="card-text">
                         @if($producto->estado==0)
@@ -42,25 +42,8 @@
                     </p>
                 </div>
 
-
-
-                @auth
-
-                @if($producto->estado==0)
                 <a href="/producto/{{$producto->id}}" class="btn btn-success">Ver mas</a>
-                @else
-                <a href="/producto/{{$producto->id}}" class="btn btn-success disabled">Ver mas</a>
 
-
-                @endif
-
-                @endauth
-
-                @guest
-                <a href="/register" class="btn btn-success">
-                    Registrarse
-                </a>
-                @endguest
             </div>
         </div>
 

@@ -132,8 +132,39 @@ class ProductoController extends Controller
      * @param  \App\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Producto $producto)
+    public function destroy($id)
     {
-        //
+        $favoritos = Favoritos::where('idProducto', $id)->get();
+        foreach ($favoritos as $favorito){
+            $favorito->delete();
+        }
+        $producto=Producto::find($id);
+        $producto->delete();
+        return redirect("/");
     }
+
+    public function misproductos(){
+        $productos=Producto::Where('idUser',auth()->user()->id)->get();
+
+
+        return view('productos.misproductos')->with(['productos'=>$productos]);
+    }
+
+     public function editar($id){
+        $producto=Producto::find($id);
+
+        if($producto->estado==0)
+        {
+            $producto->estado=1;
+
+        }
+        else{
+
+            $producto->estado=0;
+
+
+        }
+        $producto->save();
+        return redirect('/producto/'. $producto->id);
+     }
 }

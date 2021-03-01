@@ -37,7 +37,7 @@ class CategoriaController extends Controller
     {
         $data = $request->all();
         Categoria::create($data);
-        return redirect('productos');
+        return redirect('/');
     }
 
     /**

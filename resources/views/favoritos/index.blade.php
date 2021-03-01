@@ -33,9 +33,14 @@
                         @endif
                     </p>
                 </div>
-
+                @auth
                 <a href="/producto/{{$favorito->producto->id}}" class="btn btn-success">Ver mas</a>
-
+                @endauth
+                @guest
+                <a href="/register" class="btn btn-success">
+                    Registrarse
+                </a>
+                @endguest
             </div>
         </div>
 

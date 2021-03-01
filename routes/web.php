@@ -34,3 +34,8 @@ Route::post('/favoritos/nuevo/{id}', 'FavoritosController@store');
 Route::post('/favoritos/borrar/{id}', 'FavoritosController@destroy');
 
 Route::post('/mensaje/nuevo/{id}', 'ContactoController@store');
+
+Route::get('/mis_productos', 'ProductoController@misproductos')->name('misproductos');
+Route::post('/productos/borrar/{id}', 'ProductoController@destroy');
+
+Route::post('/productos/editar/{id}', 'ProductoController@editar');
